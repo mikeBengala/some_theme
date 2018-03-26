@@ -1,0 +1,25 @@
+/* utils class */
+.float-right{
+	float:right !important;
+}
+.float-left{
+	float:left !important;
+}
+.absolute-center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.hide{
+	visibility:hidden;
+	display:none;
+}
+.main{
+	min-height:400px;
+	background:#eee;
+	padding-top:50px;
+	padding-bottom:50px;
+}

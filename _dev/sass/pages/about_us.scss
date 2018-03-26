@@ -1,0 +1,197 @@
+.about_us_stage{
+    margin:237px auto 90px auto !important;
+    float:left;
+
+    @include apply_media_query(768px){
+        margin:140px auto 40px auto !important;
+    }
+
+    hr.about_us_line{
+        width:50%;
+        max-width:135px;
+        background:$color;
+        height:1px;
+        float:left;
+        top:0;
+        left:0;
+    }
+
+    .about_us_title{
+         font-family: $title_font;
+         font-size: 60px;
+         @include responsive-font(5vw, 30px, 60px, 40px);
+         color:$text_black;
+         line-height:1.2;
+         font-weight:$title_medium;
+         max-width:55%;
+         margin-bottom:20px;
+         position:relative;
+
+         @include apply_media_query(768px){
+             max-width:50%;
+             margin-bottom:40px;
+         }
+    }
+    .crumbs{
+        margin-bottom:60px;
+    }
+
+    .about_us_picture{
+        width:100%;
+        float:left;
+        height:auto;
+        margin-bottom:85px;
+
+        @include apply_media_query(768px){
+            margin-bottom:60px;
+        }
+    }
+}
+
+.about_us_youtube_video_wrap{
+    width:100%;
+    height:80vh;
+    position:relative;
+    overflow:hidden;
+    background:rgba(#000, 0.4);
+}
+
+.customers_carousel_wrap{
+    padding-top:130px;
+    padding-bottom:120px;
+    background:rgba(#eee, 0.5);
+    text-align: center;
+
+    @include apply_media_query(768px){
+        padding-top:80px;
+        padding-bottom:80px;
+    }
+
+    .customers_title{
+        font-size:50px;
+        @include responsive-font(5vw, 14px, 50px, 30px);
+        font-family:$title_font;
+        font-weight:$title_medium;
+        color:$text_black;
+        text-transform: uppercase;
+        margin-bottom:38px;
+        text-align: center;
+        width:100%;
+
+        @include apply_media_query(768px){
+            margin-bottom:20px;
+        }
+    }
+    .customers_title_underline{
+        width:135px;
+        height:1px;
+        background:$color;
+        display:inline-block;
+        margin-bottom:40px;
+
+        @include apply_media_query(768px){
+            margin-bottom:30px;
+        }
+    }
+    .regular_padding{
+        @include apply_media_query(480px){
+            padding-left: 0!important;
+            padding-right: 0!important;
+        }
+    }
+    .owl-item{
+        background:#fff;
+    }
+    .item{
+        opacity:0.5;
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        transition:all 0.35s ease;
+        cursor:grab;
+        padding-bottom:55%;
+        position:relative;
+
+        @include apply_media_query(480px){
+            -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        &:hover{
+            -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+            filter: grayscale(0);
+            opacity:1;
+        }
+
+        img{
+            position:absolute;
+            @include align_verticaly_and_horizontaly();
+            max-height:80%;
+            max-width:80%;
+            object-fit: contain;
+        }
+    }
+
+}
+
+.acomplishments_counter_wrap{
+    background:$color;
+    padding-top:104px;
+    padding-bottom:74px;
+    overflow:hidden;
+
+    @include apply_media_query(480px){
+        padding-top:70px;
+        padding-bottom:40px;
+    }
+
+    .acomplishments_counter{
+        text-align: center;
+
+        @include apply_media_query(768px){
+            max-width:410px;
+            width:100%;
+            display:block;
+            margin:auto;
+        }
+
+        li{
+            display: inline-block;
+            width:24%;
+            box-sizing: border-box;
+            padding-left:20px;
+            padding-right:20px;
+            margin-bottom:30px;
+
+            @include apply_media_query(768px){
+                width:49%;
+                padding-left:10px;
+                padding-right:10px;
+            }
+
+            p{
+                font-family: $title_font;
+                font-size:60px;
+                color:#fff;
+                font-weight:$title_medium;
+
+                @include apply_media_query(480px){
+                    font-size:40px;
+                }
+            }
+
+            small{
+                font-family:$font;
+                font-size:16px;
+                color:#fff;
+                font-weight:$font_regular;
+                text-align: center;
+
+                @include apply_media_query(480px){
+                    font-size:12px;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,21 @@
+/*Convert pixels to em -------------------------*/
+$browser-context: 16;
+@function convertPXtoEM($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em
+}
+/*Convert pixels to em -------------------------*/
+
+
+/*Define Path URL images -------------------------*/
+$imagesBaseUrl: "../quiet_theme/static/img/";
+@function imgUrl($imageName) {
+  @return url(#{$imagesBaseUrl+$imageName})
+}
+/*Define Path URL images -------------------------*/
+
+/*Define Path URL fonts --------------------------*/
+$fontsBaseUrl: "../quiet_theme/static/fonts/";
+@function fontUrl($fontName) {
+  @return url(#{$fontsBaseUrl+$fontName})
+}
+/*Define Path URL fonts --------------------------*/

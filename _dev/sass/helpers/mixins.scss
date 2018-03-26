@@ -1,0 +1,229 @@
+//criar borders numa font
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}
+
+//scale objects
+@mixin scaleItems($val){
+  -webkit-transform: scale($val);
+      -ms-transform: scale($val);
+          transform: scale($val);
+}
+
+//remove align
+@mixin remove_align{
+  left: initial !important;
+  top: initial !important;
+  -webkit-transform: initial !important;
+      -ms-transform: initial !important;
+          transform: initial !important;
+}
+
+//align verticaly
+@mixin align_verticaly{
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+//align horizontal
+@mixin align_horizontaly{
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+//align horizontal
+@mixin align_verticaly_and_horizontaly{
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+//background image
+@mixin backgroundImage($imageUrl, $repeat, $alignH, $alignV) {
+  background-image: url($imageUrl);
+  background-repeat: $repeat;
+  background-position: $alignH $alignV;
+}
+
+//background image cover
+@mixin coverBgImage($_horiz, $_vert){
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+
+  background-position: $_horiz $_vert;
+}
+
+//gradient linear color
+@mixin gradientColor($color1, $color2, $angle){
+  background: $color1;
+  background: -moz-linear-gradient($angle, $color1 0%, $color2 100%);
+  background: -webkit-linear-gradient($angle, $color1 0%, $color2 100%);
+  background: -o-linear-gradient($angle, $color1 0%, $color2 100%);
+  background: -ms-linear-gradient($angle, $color1 0%, $color2 100%);
+  background: linear-gradient($angle, $color1 0%, $color2 100%);
+}
+
+//gradient radial color
+@mixin gradientRadialColor($color1, $color2){
+  background: $color1;
+  background: -moz-radial-gradient(center, ellipse cover, $color1 0%, $color2 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $color1), color-stop(100%, $color2));
+  background: -webkit-radial-gradient(center, ellipse cover, $color1 0%, $color2 100%);
+  background: -o-radial-gradient(center, ellipse cover, $color1 0%, $color2 100%);
+  background: -ms-radial-gradient(center, ellipse cover, $color1 0%, $color2 100%);
+  background: radial-gradient(ellipse at center, $color1 0%, $color2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2', GradientType=1 );
+}
+
+//animations
+@mixin animation($time, $ease){
+  -webkit-transition: all $ease $time;
+     -moz-transition: all $ease $time;
+       -o-transition: all $ease $time;
+          transition: all $ease $time;
+}
+
+//rotate element
+@mixin rotateElement($deg){
+  -webkit-transform: rotate($deg);
+     -moz-transform: rotate($deg);
+       -o-transform: rotate($deg);
+      -ms-transform: rotate($deg);
+          transform: rotate($deg);
+}
+
+//opacity element
+@mixin opacity($val){
+  opacity: $val;
+  filter: alpha(opacity=$val);
+}
+
+//aplicar grayScale a uma imagem
+@mixin grayScale($val){
+  -webkit-filter: grayscale($val);
+          filter: grayscale($val);
+}
+
+//box shadow
+@mixin boxShadow($h, $v, $blur, $spread, $color){
+  -webkit-box-shadow: $h $v $blur $spread $color;
+     -moz-box-shadow: $h $v $blur $spread $color;
+          box-shadow: $h $v $blur $spread $color;
+}
+
+//apply border radius
+@mixin setRadius($val){
+  -webkit-border-radius: $val;
+     -moz-border-radius: $val;
+          border-radius: $val;
+}
+
+// define placeholder inputs color
+@mixin placeholder_color($color){
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+}
+
+//apply media query to element
+@mixin apply_media_query($val){
+  @media (max-width: $val) {
+    @content;
+  }
+}
+@mixin apply_media_query_min($val){
+  @media (min-width: $val) {
+    @content;
+  }
+}
+
+/*
+Define font size responsive, with max and min value
+  @example scss - 5vw font size (with 50px fallback), minumum of 35px and maximum of 150px
+  @include responsive-font(5vw, 35px, 150px, 50px);
+*/
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+  @if $fallback {
+    font-size: $fallback;
+  }
+  font-size: $responsive;
+}
+
+
+
+
+// miguel mixins
+@mixin allprefix($property, $value){
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+@mixin rotate($val){
+  -ms-transform: rotate($val);
+  -webkit-transform: rotate($val);
+  transform: rotate($val);
+  transition: -ms-transform 0.5s ease, -webkit-transform 0.5s ease, transform 0.5s ease;
+}
+@mixin translate($x, $y){
+  -ms-transform: translate($x, $y);
+  -webkit-transform: translate($x, $y);
+  transform: translate($x, $y);
+  transition: -ms-transform 0.5s ease, -webkit-transform 0.5s ease, transform 0.5s ease;
+}
+@mixin radius($r){
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  border-radius: $r;
+}

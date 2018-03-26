@@ -1,0 +1,32 @@
+/*!
+Theme Name: Quiet Theme
+Theme URI: http://www.gfn.pt
+Description: Wordpress Theme developed in Portugal by Miguel Bengala working for Global Four Net gfn.pt
+Author: Ninja Mike
+Version: 2.0.3
+*/
+
+@import "helpers/resets.scss";
+@import "helpers/helpers.scss";
+@import "helpers/functions.scss";
+@import "helpers/mixins.scss";
+@import "helpers/config.scss";
+
+@import "libs/fontawesome.scss";
+@import "libs/unsemantic-grid-base.scss";
+@import "libs/unsemantic-grid-responsive.scss";
+@import "libs/unsemantic-grid-responsive-tablet.scss";
+@import "libs/owl_carousel.scss";
+@import "libs/owl_theme.scss";
+@import "libs/magnific_popup.scss";
+
+@import "templates/header.scss";
+
+@import "pages/homepage.scss";
+@import "pages/index.scss";
+@import "pages/about_us.scss";
+@import "pages/page_and_single.scss";
+@import "pages/search_results.scss";
+@import "pages/contacts.scss";
+
+@import "templates/footer.scss";

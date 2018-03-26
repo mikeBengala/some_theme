@@ -1,0 +1,28 @@
+.search_results{
+    .hentry{
+        width:100%;
+        float:left;
+        margin-bottom:80px;
+        .entry-meta, .entry-utility{
+            span{
+                font-family:$title_font;
+                font-size:14px;
+                color:$text_black;
+
+                a{
+                    color:$color;
+                    transition:all 0.35s ease;
+
+                    &:hover{
+                        color:$color_2;
+                    }
+                }
+            }
+        }
+    }
+    #nav-below.navigation{
+        margin-bottom:150px;
+        width:100%;
+        float:left;
+    }
+}

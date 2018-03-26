@@ -1,0 +1,167 @@
+.post{
+    margin-bottom:80px;
+    display:grid;
+
+    .the_post_thumbnail{
+        width:100%;
+        padding-bottom:80%;
+        overflow:hidden;
+        position:relative;
+        margin-bottom:32px;
+
+        img{
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition:all 0.35s ease;
+            margin:0;
+        }
+        &:after{
+            background:rgba(#fff, 0.3);
+            opacity:0;
+            transition:opacity 0.35s ease;
+            content:"";
+            position:absolute;
+            width:100%;
+            height:100%;
+        }
+        &:hover{
+            img{
+                @include scaleItems(1.2);
+            }
+            &:after{
+                opacity:1;
+            }
+        }
+    }
+    .date_category{
+        font-size:9px;
+        color:$text_black;
+        font-weight:$font_bold;
+        text-transform: uppercase;
+        margin-bottom:10px;
+    }
+    h1{
+        font-family: $title_font;
+        font-size:30px;
+        font-weight:$title_extra_light;
+        color:$text_black;
+        margin-bottom:10px;
+        transition:color 0.35s ease;
+
+        &:hover{
+            color:$color;
+        }
+    }
+    p{
+        @extend .regular_text;
+    }
+    hr{
+        width:34px;
+        height:1px;
+        background: $color;
+    }
+    .the_post_buttons{
+        width:100%;
+        float:left;
+
+        a{
+            text-transform: uppercase;
+            font-size:11px;
+            font-weight:$font_bold;
+            font-family:$font;
+            color:$text_black;
+            padding:20px 0;
+            float:left;
+            transition:color 0.35s ease;
+            margin-right:15px;
+
+            &:last-child{
+                margin-right:0;
+            }
+            &:hover{
+                color:$color;
+            }
+        }
+    }
+    .the_post_cat{
+        color:$text_black;
+        transition: color 0.35s ease;
+        &:hover{
+            color:$color;
+        }
+    }
+}
+.navigation_bar{
+    width:100%;
+    float:left;
+    margin-bottom:100px;
+    box-sizing: border-box;
+    padding-left:10px;
+    padding-right:10px;
+
+    .totals{
+        float:left;
+        margin-top:2px;
+
+        p, span{
+            color:$text_black;
+            font-family:$font;
+            font-weight:$font_light;
+            font-size:16px;
+        }
+    }
+    .pagination{
+        float:right;
+        height:25px;
+
+        .page-numbers{
+            width:30px;
+            line-height:25px;
+            text-align:center;
+            float:left;
+            font-family:$font;
+            font-weight:$font_regular;
+            color:$text_black;
+            font-size:16px;
+            transition:background 0.35s ease, color 0.35s ease;
+            position:relative;
+            &.current, &:hover{
+                background:$color;
+                color:#fff;
+            }
+
+            &.next, &.prev{
+                background:transparent !important;
+                color:$color;
+                height:100%;
+                overflow:hidden;
+                .arrow_wrap{
+                    width:200%;
+                    height:100%;
+                    position:absolute;
+                    transition:all 0.25s ease;
+                    i{
+                        width:50%;
+                        line-height:25px;
+                    }
+                }
+            }
+        }
+        .arrow_wrap_prev{
+            left:0;
+
+            &:hover{
+                @include translate(-50%, 0);
+            }
+        }
+        .arrow_wrap_next{
+            right:0;
+
+            &:hover{
+                @include translate(50%, 0);
+            }
+        }
+    }
+}
